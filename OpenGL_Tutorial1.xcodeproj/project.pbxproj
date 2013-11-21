@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		15DDAE70183D288F000129B2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAE6F183D288F000129B2 /* main.cpp */; };
 		15DDAE72183D288F000129B2 /* OpenGL_Tutorial1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */; };
+		15DDAE7B183D316C000129B2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DDAE7A183D316C000129B2 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		15DDAE6C183D288F000129B2 /* OpenGL_Tutorial1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL_Tutorial1; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DDAE6F183D288F000129B2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OpenGL_Tutorial1.1; sourceTree = "<group>"; };
+		15DDAE78183D3163000129B2 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		15DDAE7A183D316C000129B2 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15DDAE7B183D316C000129B2 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +48,8 @@
 		15DDAE63183D288F000129B2 = {
 			isa = PBXGroup;
 			children = (
+				15DDAE7A183D316C000129B2 /* OpenGL.framework */,
+				15DDAE78183D3163000129B2 /* GLUT.framework */,
 				15DDAE6E183D288F000129B2 /* OpenGL_Tutorial1 */,
 				15DDAE6D183D288F000129B2 /* Products */,
 			);
@@ -186,14 +192,48 @@
 		15DDAE76183D288F000129B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glew/1.10.0/include,
+					/opt/X11/include,
+					/usr/local/include,
+				);
+				LD_DYLIB_INSTALL_NAME = "";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glew/1.10.0/lib,
+					/opt/X11/lib,
+					/usr/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lGLEW",
+					"-lGLUT",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		15DDAE77183D288F000129B2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glew/1.10.0/include,
+					/opt/X11/include,
+					/usr/local/include,
+				);
+				LD_DYLIB_INSTALL_NAME = "";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/glew/1.10.0/lib,
+					/opt/X11/lib,
+					/usr/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lGLEW",
+					"-lGLUT",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -216,6 +256,7 @@
 				15DDAE77183D288F000129B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
