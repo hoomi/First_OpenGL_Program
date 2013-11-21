@@ -9,13 +9,25 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <GLUT/glut.h>
+//#include "vgl.h"
+#include "LoadShaders.h"
 //#include <GL/freeglut.h>
+
+#define BUFFER_OFFSET(x)  ((const void*) (x))
 
 
 
 
 using namespace std;
 
+enum VAO_IDs {Triangles, NumVAOs};
+enum Buffer_IDs {ArrayBuffer, NumBuffers};
+enum Attrib_IDs {vPosition = 0 };
+
+GLuint VAOs[NumVAOs];
+GLuint Buffers[NumBuffers];
+
+const GLuint NumVertices = 6;
 
 void initGLut(int argc, char** argv) {
     //Initializes the GLUT library
@@ -43,9 +55,53 @@ void initGLut(int argc, char** argv) {
     
 }
 
+
+void init(void) {
+    //This causes OpenGL to allocate some number of vertex array object names for our use
+    //returns that number of names to us in VAOs
+    glGenVertexArrays(NumVAOs,VAOs);
+    glBindVertexArray(VAOs[Triangles]);
+    GLfloat  vertices[NumVertices][2] = {
+        { -0.90, -0.90 },  // Triangle 1
+        {  0.85, -0.90 },
+        { -0.90,  0.85 },
+        {  0.90, -0.85 },  // Triangle 2
+        {  0.90,  0.90 },
+        { -0.85,  0.90 }
+    };
+    glGenBuffers(NumBuffers,Buffers);
+    glBindBuffer(GL_ARRAY_BUFFER,Buffers[ArrayBuffer]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),vertices,GL_STATIC_DRAW);
+    ShaderInfo shaders[] = {
+        {GL_VERTEX_SHADER, "triangles.vert"},
+        {GL_FRAGMENT_SHADER, "triangles.frag"},
+        {GL_NONE, NULL}
+    };
+    
+    GLuint program = LoadShaders(shaders);
+    glUseProgram(program);
+    glVertexAttribPointer(vPosition,2,GL_FLOAT,GL_FALSE,0, BUFFER_OFFSET(0));
+    glEnableVertexAttribArray(vPosition);
+}
+
+void display(void) {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBindVertexArray(VAOs[Triangles]);
+    glDrawArrays(GL_TRIANGLES, 0, NumVertices);
+    glFlush();
+}
+
 int main(int argc, char** argv)
 {
     initGLut(argc, argv);
+    glewExperimental = GL_TRUE;
+    if (glewInit()) {
+        cout<<"Unable to initialize GLEW ....... exiting"<<endl;
+        exit(EXIT_FAILURE);
+    }
+    init();
+    glClearColor(0.1,0.3,0.5,0.5);
+    glutDisplayFunc(display);
     //which is an infinite loop that works with the window and operating systems to process user input and other operations like that
     glutMainLoop();
 }
