@@ -1,10 +1,10 @@
-# version 320 core
+#version 120 
 
-layout (location = 0) in vec4 vPosition;
+attribute vec4 vPosition;
 
 void
 main()
 {
-    gl_position = vPosition;
+    gl_Position = vPosition;
     
 }

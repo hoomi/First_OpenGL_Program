@@ -7,16 +7,15 @@
 //
 
 #include <iostream>
+#include <cstdio>
 #include <GL/glew.h>
 #include <GLUT/glut.h>
 //#include "vgl.h"
 #include "LoadShaders.h"
+#include "Utils.h"
 //#include <GL/freeglut.h>
 
-#define BUFFER_OFFSET(x)  ((const void*) (x))
-
-
-
+#define BUFFER_OFFSET(offset)  ((void *)(offset))
 
 using namespace std;
 
@@ -72,6 +71,8 @@ void init(void) {
     glGenBuffers(NumBuffers,Buffers);
     glBindBuffer(GL_ARRAY_BUFFER,Buffers[ArrayBuffer]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),vertices,GL_STATIC_DRAW);
+    
+    cout<<"The glsl version is: "<<Utils::getGLSLVersion()<<endl;
     ShaderInfo shaders[] = {
         {GL_VERTEX_SHADER, "triangles.vert"},
         {GL_FRAGMENT_SHADER, "triangles.frag"},
@@ -93,14 +94,31 @@ void display(void) {
 
 int main(int argc, char** argv)
 {
+
     initGLut(argc, argv);
     glewExperimental = GL_TRUE;
+    FILE* infile = fopen( "triangles.vert", "r" );
+    
+    if (!infile) {
+        cout<< "cannot open file "<<endl;
+    }
+    
     if (glewInit()) {
         cout<<"Unable to initialize GLEW ....... exiting"<<endl;
         exit(EXIT_FAILURE);
     }
+    
+    //Check to see if OpenGL 3.2 is supported on this machine 
+    if (glewIsSupported("GL_VERSION_3_2"))
+        printf("Ready for OpenGL 3.2\n");
+    else {
+        printf("OpenGL 3.2 not supported\n");
+        exit(EXIT_FAILURE);
+    }
     init();
-    glClearColor(0.1,0.3,0.5,0.5);
+    //glClearColor(0.1,0.3,0.5,0.5);
+    display();
+    
     glutDisplayFunc(display);
     //which is an infinite loop that works with the window and operating systems to process user input and other operations like that
     glutMainLoop();

@@ -1,9 +1,10 @@
-# version 320 core
+#version 120
 
-out vec3 color;
+//varying vec4 fColor;
 
 void
 main()
 {
-    color = vec3(1.0,0.0,1.0);
+//    fColor = vec4(1.0,0.0,1.0,1.0);
+gl_FragColor = vec4(1.0,0.0,1.0,1.0);
 }

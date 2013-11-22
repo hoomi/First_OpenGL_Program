@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		152E8520183E53310014E4DB /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 152E851F183E53310014E4DB /* LoadShaders.cpp */; };
 		152E8525183E56C90014E4DB /* triangles.vert in Sources */ = {isa = PBXBuildFile; fileRef = 152E8524183E56C90014E4DB /* triangles.vert */; };
 		152E8527183E56D90014E4DB /* triangles.frag in Sources */ = {isa = PBXBuildFile; fileRef = 152E8526183E56D90014E4DB /* triangles.frag */; };
+		156E8E3F183F735B00A82E09 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 156E8E3D183F735B00A82E09 /* LoadShaders.cpp */; };
+		156E8E43183F7B1100A82E09 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 156E8E41183F7B1100A82E09 /* Utils.cpp */; };
 		15DDAE70183D288F000129B2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAE6F183D288F000129B2 /* main.cpp */; };
 		15DDAE72183D288F000129B2 /* OpenGL_Tutorial1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */; };
 		15DDAE7B183D316C000129B2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DDAE7A183D316C000129B2 /* OpenGL.framework */; };
@@ -29,11 +30,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		152E851E183E530F0014E4DB /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = "../../../Downloads/oglpg-8th-edition/include/LoadShaders.h"; sourceTree = "<group>"; };
-		152E851F183E53310014E4DB /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = "../../../Downloads/oglpg-8th-edition/lib/LoadShaders.cpp"; sourceTree = "<group>"; };
-		152E8521183E549F0014E4DB /* vgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vgl.h; path = "../../../Downloads/oglpg-8th-edition/include/vgl.h"; sourceTree = "<group>"; };
 		152E8524183E56C90014E4DB /* triangles.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = triangles.vert; sourceTree = "<group>"; };
 		152E8526183E56D90014E4DB /* triangles.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = triangles.frag; sourceTree = "<group>"; };
+		156E8E3D183F735B00A82E09 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadShaders.cpp; sourceTree = "<group>"; };
+		156E8E3E183F735B00A82E09 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadShaders.h; sourceTree = "<group>"; };
+		156E8E40183F747900A82E09 /* vgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vgl.h; sourceTree = "<group>"; };
+		156E8E41183F7B1100A82E09 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		156E8E42183F7B1100A82E09 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		15DDAE6C183D288F000129B2 /* OpenGL_Tutorial1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL_Tutorial1; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DDAE6F183D288F000129B2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OpenGL_Tutorial1.1; sourceTree = "<group>"; };
@@ -56,9 +59,9 @@
 		152E8522183E56840014E4DB /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				152E8521183E549F0014E4DB /* vgl.h */,
-				152E851F183E53310014E4DB /* LoadShaders.cpp */,
-				152E851E183E530F0014E4DB /* LoadShaders.h */,
+				156E8E40183F747900A82E09 /* vgl.h */,
+				156E8E3D183F735B00A82E09 /* LoadShaders.cpp */,
+				156E8E3E183F735B00A82E09 /* LoadShaders.h */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -97,6 +100,8 @@
 				152E8522183E56840014E4DB /* Dependencies */,
 				15DDAE6F183D288F000129B2 /* main.cpp */,
 				15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */,
+				156E8E41183F7B1100A82E09 /* Utils.cpp */,
+				156E8E42183F7B1100A82E09 /* Utils.h */,
 			);
 			path = OpenGL_Tutorial1;
 			sourceTree = "<group>";
@@ -153,9 +158,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				15DDAE70183D288F000129B2 /* main.cpp in Sources */,
-				152E8520183E53310014E4DB /* LoadShaders.cpp in Sources */,
 				152E8525183E56C90014E4DB /* triangles.vert in Sources */,
 				152E8527183E56D90014E4DB /* triangles.frag in Sources */,
+				156E8E3F183F735B00A82E09 /* LoadShaders.cpp in Sources */,
+				156E8E43183F7B1100A82E09 /* Utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +231,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_DEBUG=1",
+					"$(inherited)",
+				);
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/glew/1.10.0/include,
 					/opt/X11/include,
@@ -249,6 +260,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/glew/1.10.0/include,
 					/opt/X11/include,
