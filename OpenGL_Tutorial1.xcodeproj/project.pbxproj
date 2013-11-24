@@ -14,6 +14,9 @@
 		15DDAE70183D288F000129B2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAE6F183D288F000129B2 /* main.cpp */; };
 		15DDAE72183D288F000129B2 /* OpenGL_Tutorial1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */; };
 		15DDAE7B183D316C000129B2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DDAE7A183D316C000129B2 /* OpenGL.framework */; };
+		15E9D860183F958B00A9EF07 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15E9D85E183F958B00A9EF07 /* Logger.cpp */; };
+		15E9D8621840178F00A9EF07 /* triangles_430.vert in Sources */ = {isa = PBXBuildFile; fileRef = 15E9D8611840178F00A9EF07 /* triangles_430.vert */; };
+		15E9D86418401A2000A9EF07 /* triangles_430.frag in Sources */ = {isa = PBXBuildFile; fileRef = 15E9D86318401A2000A9EF07 /* triangles_430.frag */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +45,10 @@
 		15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OpenGL_Tutorial1.1; sourceTree = "<group>"; };
 		15DDAE78183D3163000129B2 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		15DDAE7A183D316C000129B2 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		15E9D85E183F958B00A9EF07 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		15E9D85F183F958B00A9EF07 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		15E9D8611840178F00A9EF07 /* triangles_430.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = triangles_430.vert; sourceTree = "<group>"; };
+		15E9D86318401A2000A9EF07 /* triangles_430.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = triangles_430.frag; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +78,8 @@
 			children = (
 				152E8524183E56C90014E4DB /* triangles.vert */,
 				152E8526183E56D90014E4DB /* triangles.frag */,
+				15E9D8611840178F00A9EF07 /* triangles_430.vert */,
+				15E9D86318401A2000A9EF07 /* triangles_430.frag */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -102,6 +111,8 @@
 				15DDAE71183D288F000129B2 /* OpenGL_Tutorial1.1 */,
 				156E8E41183F7B1100A82E09 /* Utils.cpp */,
 				156E8E42183F7B1100A82E09 /* Utils.h */,
+				15E9D85E183F958B00A9EF07 /* Logger.cpp */,
+				15E9D85F183F958B00A9EF07 /* Logger.h */,
 			);
 			path = OpenGL_Tutorial1;
 			sourceTree = "<group>";
@@ -162,6 +173,9 @@
 				152E8527183E56D90014E4DB /* triangles.frag in Sources */,
 				156E8E3F183F735B00A82E09 /* LoadShaders.cpp in Sources */,
 				156E8E43183F7B1100A82E09 /* Utils.cpp in Sources */,
+				15E9D860183F958B00A9EF07 /* Logger.cpp in Sources */,
+				15E9D8621840178F00A9EF07 /* triangles_430.vert in Sources */,
+				15E9D86418401A2000A9EF07 /* triangles_430.frag in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
