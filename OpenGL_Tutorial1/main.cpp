@@ -8,11 +8,13 @@
 
 #include <iostream>
 #include <cstdio>
+#include <string.h>
 #include <GL/glew.h>
 #include <GLUT/glut.h>
 //#include "vgl.h"
 #include "LoadShaders.h"
 #include "Utils.h"
+#include "Logger.h"
 //#include <GL/freeglut.h>
 
 #define BUFFER_OFFSET(offset)  ((void *)(offset))
@@ -71,11 +73,23 @@ void init(void) {
     glGenBuffers(NumBuffers,Buffers);
     glBindBuffer(GL_ARRAY_BUFFER,Buffers[ArrayBuffer]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),vertices,GL_STATIC_DRAW);
-    
-    cout<<"The glsl version is: "<<Utils::getGLSLVersion()<<endl;
+    Logger::debug(2, "The glsl version is: ", Utils::getGLSLVersion());
+    int comparison = memcmp(Utils::getGLSLVersion(), "1.20", sizeof("1.20"));
+//    int comparison = 0;
+    const char* shaders_files[2];
+    if ( comparison > 0) {
+        shaders_files[0] = "tirangles_430.vert";
+        shaders_files[1] = "tirangles_430.frag";
+    } else if (comparison < 0) {
+        Logger::error(1,"Does not suppoer glsl lower version than 1.20");
+        exit(EXIT_FAILURE);
+    } else {
+        shaders_files[0] = "triangles.vert";
+        shaders_files[1] ="triangles.frag";
+    }
     ShaderInfo shaders[] = {
-        {GL_VERTEX_SHADER, "triangles.vert"},
-        {GL_FRAGMENT_SHADER, "triangles.frag"},
+        {GL_VERTEX_SHADER, shaders_files[0]},
+        {GL_FRAGMENT_SHADER, shaders_files[1]},
         {GL_NONE, NULL}
     };
     
@@ -92,31 +106,34 @@ void display(void) {
     glFlush();
 }
 
+bool isWorkspaceSetToCorrectPlace() {
+    FILE* infile = fopen( "triangles.vert", "rb" );
+    return infile;
+}
+
 int main(int argc, char** argv)
 {
 
     initGLut(argc, argv);
     glewExperimental = GL_TRUE;
-    FILE* infile = fopen( "triangles.vert", "r" );
+   
     
-    if (!infile) {
-        cout<< "cannot open file "<<endl;
-    }
     
     if (glewInit()) {
-        cout<<"Unable to initialize GLEW ....... exiting"<<endl;
+        Logger::error(1,"Unable to initialize GLEW ....... exiting");
         exit(EXIT_FAILURE);
     }
     
     //Check to see if OpenGL 3.2 is supported on this machine 
     if (glewIsSupported("GL_VERSION_3_2"))
-        printf("Ready for OpenGL 3.2\n");
+        Logger::debug(1,"Ready for OpenGL 3.2");
     else {
-        printf("OpenGL 3.2 not supported\n");
+        Logger::error(1,"OpenGL 3.2 not supported");
         exit(EXIT_FAILURE);
     }
+    
     init();
-    //glClearColor(0.1,0.3,0.5,0.5);
+    glClearColor(0.1,0.3,0.5,0.5);
     display();
     
     glutDisplayFunc(display);
